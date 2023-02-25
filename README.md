@@ -285,8 +285,33 @@ or: `a or b=3` 当 and 前的值为 true 则 or 后的语句不会执行
 
 #### 5.1 输入  
 
+- 普通输出
 
+`print('hello world')`
 
+- 格式化输出
+    - %s代表的是字符串
+    - %d代表的是数值
+  
+```python
+# %s 字符串
+# %d 数字
+name = '勋悟空'
+age = 18
+print('我是%s' % name)  # 我是勋悟空
+print('我是%s,我今年%d岁了' % (name, age))  # 我是勋悟空,我今年18岁了
+```
+
+#### 5.2 输入
+
+- input
+
+```python
+# name 赋值为输入的值
+name = input('请输入你的姓名\n')
+# 输出
+print('我是%s' % name)   
+```
 
 
 
