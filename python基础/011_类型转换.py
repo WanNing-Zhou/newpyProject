@@ -12,3 +12,7 @@ print('123.34转换成整型', int(123.34))  # 123
 print('123.34转换成字符串', str(123.34))  # '123.34'
 print('123.34转换bool值', bool(123.34))  # True
 print('123转换成浮点型', float(123))  # 123.0
+
+print('Hello' + 'World')  # HelloWorld
+
+print('Hello' * 3)  # HelloHelloHello
