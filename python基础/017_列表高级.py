@@ -42,8 +42,16 @@ print("添加前的数据", names)  # 添加前的数据 ['勋悟空', '猪八�
 
 # 指定元素在List中的个数
 
-print('names中勋悟空有几个', names.count('勋悟空'))  # names中勋悟空有几个 1
+# print('names中勋悟空有几个', names.count('勋悟空'))  # names中勋悟空有几个 1
 
+# 删除元素
 
+# names.pop()
+# print('删除后的列表', names)  # 删除后的列表 ['勋悟空', '猪八戒']
+#
+# names.pop(1)
+# print('删除后的列表', names)  # 删除后的列表 ['勋悟空', '沙和尚']
 
+names.remove('勋悟空')
+print('删除后的列表', names)  # 删除后的列表 ['猪八戒', '沙和尚']
 
