@@ -17,5 +17,5 @@ elif age >= 17:
 elif age >= 13:
     print('小朋友, 你的作业写完了吗')
 else:
-    print('未成年人不允许进入0网吧')
+    print('未成年人不允许进入网吧')
 

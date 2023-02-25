@@ -397,12 +397,68 @@ for 临时变量 in 列表或者字符串等可迭代对象:
 **for循环的使用**
 - 遍历字字符串
 
+```python
+for s in 'hello':
+    print('%s' % s)
+    
+# 输出:
+# h
+# e
+# l
+# l
+# o
+```
 
+**range方法的使用**  
+- range方法的结果是一个可以遍历的对象
 
+- range(n) 0-n 左闭右开区间的可遍历对象
+```python
+# range(5) 0-4 左闭右开区间[0,5)
+for i in range(5):
+    print(i)
 
+```
 
+- range(a,b) a到b-1 左闭右开区间的可遍历对象
+  - a 起始值
+  - b 结束值
 
+```python
+# range(1, 6) 1-5 左闭右开区间[1,6)
+for i in range(1, 6):
+    print(i)
+```
 
+- range(a,b,c)  a到b-1左闭右开, 从a开始每次+c
+  - a 起始值
+  - b 结束值
+  - c 步长
+
+```python
+for i in range(1, 10, 3):
+    print(i)
+
+# 结果
+# 1
+# 4
+# 7
+```
+
+**循环一个列表**
+
+```python
+words = ['只', '因', '你', '太', '美']
+for word in words:
+    print(word)
+
+# 结果
+# 只
+# 因
+# 你
+# 太
+# 美
+```
 
 
 
