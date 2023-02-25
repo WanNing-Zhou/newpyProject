@@ -52,9 +52,11 @@
 临时使用  
  在使用pip的时候，加上参数 -i 和镜像地址
 
-可以使用pycharm集成开发环境进行python的开发
+可以使用pycharm集成开发环境进行python的开发  
 
- 
+可以在 pycharm 的 setting 中更改 python script 模板 
+
+
 
 
 
