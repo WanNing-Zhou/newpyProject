@@ -625,9 +625,107 @@ print(s[1:])  # 1234567 从下标1开始,取出 后面所有的元素(没有结�
 print(s[:4])  # 0123  从开始到 下标为4的前一个元素(没有开始位置)
 print(s[1:5:2])  # 13 从下标为1开始,取到下标为5的前一个元素, 步长为2 (不包含结束位置本身)
 ```
+#### 8.5 字典高级
 
+##### **查看元素**  
 
+除了使用key查找数据,还可以使用get来获取数据 
 
+```python
+info = {'name': '勋悟空', 'age': 3200}
+print(info['name'])  # 勋悟空
+# print(info['sex'])  # 如果key不存在,就会发生异常
+
+print(info.get('sex'))   # None # 获取不存在的key, 获取到空的内容, 不会出现异常
+print(info.get('sex', '男'))   # 男 # 获取不存在的key, 可以提供一个默认值
+
+```
+
+##### **修改元素**  
+
+字典的每个元素中的数据是可以修改的, 只要通过key找到, 即可修改  
+  
+```python
+info = {'name': '勋悟空', 'age': 3200}
+print('修改前的字典为 %s:' % info)
+info['age'] = 2000  # 为已存在的键赋值就是修改
+```
+
+#####  **添加元素**
+
+字典的元素是可以添加, 通过key进行添加
+```python
+info = {'name': '勋悟空', 'age': 3200}
+print('修改前的字典为 %s:' % info)
+info['id'] = 10086  # 为不存在的键赋值就是添加
+print('修改后的字典为 %s:' % info)  # 修改后的字典为 {'name': '勋悟空', 'age': 2000, 'id': 10086}:
+```
+
+##### **删除元素**  
+- del
+1. 删除字典中指定的一个元素
+```python
+info = {'name': '勋悟空', 'age': 3200}
+del info['age']
+print('删除age后的字典为 %s:' % info)  # 删除age后的字典为 {'name': '勋悟空'}:
+```
+2. 删除整个字典
+```python
+info = {'name': '勋悟空', 'age': 3200}
+del info
+print('删除info字典%s' % info)  # 报错: NameError: name 'info' is not defined
+```
+- clear
+  - 清空字典,但是保留字典对象
+```python
+# 删除
+info = {'name': '勋悟空', 'age': 3200}
+info.clear()
+print('清空info字典后为%s' % info)  # 清空info字典后为{}
+```
+
+##### **字典的遍历**  
+
+1. 遍历字典的key
+- 字典`.keys()`方法可以获取字典中所有key的值, key是一个变量的名字
+```python
+info = {'name': '勋悟空', 'age': 3200}
+for key in info.keys():
+    print(key)
+
+# 输出结果
+# name
+# age
+```
+2. 遍历字典的value
+- 字典`.values()`方法可以获取字典中所有的value值
+````python
+info = {'name': '勋悟空', 'age': 3200}
+for value in info.values():
+    print(value)
+
+# 输出结果
+# 勋悟空
+# 3200
+````
+3. 遍历字典的key和value  
+```python
+info = {'name': '勋悟空', 'age': 3200}
+for key, value in info.items():
+    print(key, value)
+# 输出结果
+# name 勋悟空
+# age 3200
+```
+4. 遍历字典的项/元素  
+```python
+info = {'name': '勋悟空', 'age': 3200}
+for item in info.items():
+    print(item)
+# 输出结果
+# ('name', '勋悟空')
+# ('age', 3200)
+```
 
 
 
