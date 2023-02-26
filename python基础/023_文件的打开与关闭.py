@@ -9,5 +9,11 @@ if __name__ == "__main__":
     run_code = 0
 
 
+# 打开文件
+fp = open('test.txt', 'w')
+
+fp.write('hello world')
+
+fp.close()
 
 
