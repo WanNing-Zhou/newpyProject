@@ -30,5 +30,3 @@ fp = open('test.txt', 'r')
 content = fp.readlines()
 print(content)
 
-
-))
