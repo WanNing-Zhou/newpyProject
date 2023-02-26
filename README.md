@@ -893,14 +893,82 @@ fp = open('test.txt', 'a')
 content = fp.readlines()
 print(content)
 ```
-> readlines可以按照行来读取, 会将所有的数据都读取到, 并且以一个列表的形式返回  
+> `readlines`可以按照行来读取, 会将所有的数据都读取到, 并且以一个列表的形式返回  
 > 列表的元素, 是一行一行的数据
 
 
-#### 10.3 序列化
+#### 10.3 序列化和反序列化
 
+通过文件操作, 我们可以将字符串写入到一个本地文件, 但是, 如果一个对象(例如列表, 字典, 元组等), 就无法直接写入到
+一个文件里,需要对这歌对象进行序列化, 然后才能写入到文件里
 
+设计一套协议, 按照某周规则, 将内存中的数据转换为字节序列保存到文, 这就是序列化, 反之, 从文件的字节序列恢复到内存中, 就是反序列化
 
+> 对象 => 字节序列  === 序列化  
+> 字节序列 => 对象 === 反序列化  
 
+python提供了JSON这个模块用来实现数据的序列化和反序列化
 
+**JSON模块**
 
+JSON(JavaScriptObjectNotation, JS对象简谱)是一种轻量级的数据交互标准, JSON的本质是字符串  
+
+**使用JSON实现序列化**  
+JSON提供了dump和dumps方法,将一个对象进行序列化  
+dumps方法的作用是把对象转换为字符串,它本身不具备将数据写入到文件的功能
+
+```python
+import json
+file = open('names.txt', 'w')
+names = ['勋悟空', '猪八戒', '沙和尚', '唐僧']
+
+# file.write(names)  # 出错,不能直接将列表写入到文件里
+
+# 可以调用 json 的 dupms 方法, 传入一个对象参数
+result = json.dumps(names)
+
+# dumps 方法得到的结果是一个字符串
+print(type(result))  # <class 'str'>
+
+# 可以将字符出啊写入到文件里
+file.write(result)
+```
+
+- dump
+在对象转换为字符串的同时,指定一个文件对象,然后把转换后的对象字符串写入到这文件中
+```python
+import json
+
+file = open('names.txt', 'w')
+names = ['勋悟空', '猪八戒', '沙和尚', '唐僧']
+json.dump(names, file)
+
+file.close()
+```
+
+**反序列化**  
+JSON提供了load和loads方法,将一个对象进行序列化  
+loads方法的作用是把字符串转换对象,它本身不具备将读取文件的功能
+```python
+import json
+fp = open('names.txt', 'r')
+
+content = fp.read()
+print(content)
+print(type(content))  # <class 'str'>
+result = json.loads(content)
+print(result)
+print(type(result))  # <class 'list'>
+
+```
+
+- load
+load 方法的作用是将文件对象的数据反序列化,返回一个反序列出来的对象
+```python
+import json
+fp = open('names.txt', 'r')
+result = json.load(fp)
+print(result)
+print(type(result))
+fp.close()
+```
