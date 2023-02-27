@@ -1363,6 +1363,23 @@ if __name__ == "__main__":
 4. 通过urllib发送请求的时候, 有可能会发送失败, 这个时候如果想然你的代码更加健壮, 可以通过try-except进行捕获异常,异常又两类,URLError\HTTPError
 
 
+### 13 Handler处理器
+
+为什么要学习handler?  
+urllib.request.urlopen(url)  
+    不能定制请求头  
+urllib.request.Request(url,headers,data)  
+    可以定制请求头  
+
+Handler  
+定制更高级的请求头,(随着业务逻辑的复杂,请求对象的定制已经满足不了我们的需求,同台cookie和代理不能使用请求对象的定制)
+
+**基本使用**  
+eg:
+```python
+
+```
+
 
 
 
