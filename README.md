@@ -1098,6 +1098,19 @@ except FileNotFoundError:
 
 ### 7 请求对象的定制
 
+UA介绍: User Agent 中文名为用户代理, 简称UA, 它是一个特殊字符串头, 使得服务器能都识别客户使用的操作系统,CPU类型,浏览器及版本,浏览器内核,浏览器渲染引擎,浏览器语言,浏览器插件等
+
+语法: request = urllib.request.Request()
+
+
+### 8 解编码
+
+**1. get请求方式: urllib.parse.quote()**
+
+eg:  
+
+
+
 
 
 
