@@ -1354,7 +1354,16 @@ if __name__ == "__main__":
 
 ```
 
-### 11.
+### 11 URLError\HTTPError
+
+简介:  
+1. HTTPError异常类是URLError的字类
+2. 导入的包urllib.error.HTTPError  urllib.error.URLError
+3. http错误: http错误是针对浏览器无法连接到服务器而增加出来的错误提示,引导并告诉浏览器该页是哪里出了问题
+4. 通过urllib发送请求的时候, 有可能会发送失败, 这个时候如果想然你的代码更加健壮, 可以通过try-except进行捕获异常,异常又两类,URLError\HTTPError
+
+
+
 
 
 
