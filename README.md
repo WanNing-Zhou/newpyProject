@@ -1478,9 +1478,36 @@ print(proxies)
 ### 1. xpath  
 
 xpath使用:  
-注意: 提前安装xpath插件  
+注意: 提前安装xpath插件
 1. 安装lxml库  
-   `pip install lxml -i https:pypi.douban.com/simple `
+   `pip install lxml -i https:pypi.douban.com/simple`
+2. 导入 `lxml.etree`  
+    `from lxml import etree`
+3. etree.parse() 解析本地文件
+4. entree.HTML() 服务器响应文件  
+   `html_tree = etree.HTML(response.read().decode('utf-8'))`
+5. `html_tree.xpath(xpath路径)`
+
+``` 
+xpath基本语法:
+    1. 路径查询
+        //: 查找所有子孙节点,不考虑层级关系
+        /: 找直接子节点
+    2. 谓词查询
+    // div[@id]
+    // div[@id="maincontent"]
+    3. 属性查询
+    // @class
+    4. 模糊查询
+    // div[contains(@8id,"he")]
+    // div[starts-with(@id,"he")]
+    
+    5. 内容查询
+        //div/h1/text()
+    6.逻辑运算
+        //div[@id="head" and @class="s_down"]
+        //title | //price
+```
  
 
 
