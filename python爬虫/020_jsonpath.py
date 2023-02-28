@@ -46,5 +46,8 @@ obj = json.load(open('020_jsonpath.json', 'r', encoding='utf-8'))
 # print(book_list)
 
 # 哪本书超过了10元钱
-book_list = jsonpath.jsonpath(obj, '$..book[?(@.price>10)]')
-print(book_list)
+# book_list = jsonpath.jsonpath(obj, '$..book[?(@.price>10)]')
+# print(book_list)
+
+
+
