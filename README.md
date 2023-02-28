@@ -1377,6 +1377,54 @@ Handler
 **基本使用**  
 eg:
 ```python
+import urllib.request
+
+url = 'http://www.baidu.com'
+
+headers = {
+    # 用户代理 浏览器等用户信息
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56}'
+}
+# 请求对象的定制
+request = urllib.request.Request(url=url, headers=headers)
+
+# handler build_opener open
+
+# 1) 获取handler对象
+handler = urllib.request.HTTPHandler()
+
+# 2) 获取opener对象
+opener = urllib.request.build_opener(handler)
+
+# 3) 调用open方法
+
+response = opener.open(request)
+content = response.read().decode('utf-8')
+
+print(content)
+
+```
+
+
+### 14 代理服务器  
+
+1. 代理的常用功能?
+   1. 突破自身IP访问限制,访问国外站点
+      1. 访问一些单位或团体的内部资源
+         1. 扩展: 某大学FTP(前提是该代理地址在资源允许的访问范围之内), 使用教育网内地址免费代理服务器,就可以用于对于教育网海航的各类FTP下载上传,以及各类资料查询共享等服务
+      2. 提高访问速度
+         1. 通常代理服务器都设置一个较大的硬盘缓冲区,当有外界的信息通过时,同时也将其保存到缓冲区中,当其他用户访问相同的信息时,则直接由缓冲去中取出信息,传给用户,以提高访问速度
+      3. 隐藏真实ip
+         1. 扩展: 上网者页可以通过这种方法隐藏自己的IP,免受攻击
+2. 代理配置代理
+   1. 创建Request对象
+   2. 创建ProxyHandler对象
+   3. 使用handler对象创建opener对象
+   4. 使用opener,open函数发送请求
+
+eg:  
+
+```python
 
 ```
 
