@@ -50,4 +50,3 @@ print(len(li_list))
 
 
 
-
