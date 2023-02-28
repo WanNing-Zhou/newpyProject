@@ -37,10 +37,24 @@ def get_content(request):
 
 def down_load(content):
     tree = etree.HTML(content)
-    tree.xpath('//')
+    name_list = tree.xpath('//div[@class="container"]//img/@alt')
+
+    # 一般涉及图片的网站都会进行懒加载(使用变之前的进行爬取)
+    src_list = tree.xpath('//div[@class="container"]//img/@data-original')
+
+    print(len(name_list))
+    print(len(src_list))
+
+    for i in range(len(name_list)):
+        name = name_list[i]
+        url = 'https:'+src_list[i]
+        print(name, url)
+
+        urllib.request.urlretrieve(url=url, filename='zzImgs/'+name+'.jpg')
+
 
     # 下载图片
-    urllib.request.urlretrieve('图片地址', '文件的名字')
+    # urllib.request.urlretrieve('图片地址', '文件的名字')
 
 
 if __name__ == "__main__":

@@ -1475,7 +1475,7 @@ proxies = random.choice(proxies_pool)
 print(proxies)
 ```
 
-### 1. xpath  
+### 16. xpath  
 
 xpath使用:  
 注意: 提前安装xpath插件
@@ -1508,7 +1508,98 @@ xpath基本语法:
         //div[@id="head" and @class="s_down"]
         //title | //price
 ```
- 
+
+### 17 站长素材爬取
+```python
+
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# @FileName  :019_站长素材.py
+# @Time      :2023/2/28 14:33
+# @Author    :周万宁
+
+
+# https://sc.chinaz.com/tupian/fengjingtupian.html
+
+# (1) 请求对象的定制
+# (2) 获取玩也的源码
+# 需求 下载的前十页的图片
+
+import urllib.request
+from lxml import etree
+
+def create_request(page):
+    if (page == 1):
+        url = 'https://sc.chinaz.com/tupian/fengjingtupian.html'
+    else:
+        url = 'https://sc.chinaz.com/tupian/fengjingtupian'+str(page)+'.html'
+
+    headers = {
+        # 用户代理 浏览器等用户信息
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56}'
+    }
+
+    request = urllib.request.Request(url=url, headers=headers)
+    return request
+
+
+def get_content(request):
+    response = urllib.request.urlopen(request)
+    content = response.read().decode('utf-8')
+    return content
+
+
+def down_load(content):
+    tree = etree.HTML(content)
+    name_list = tree.xpath('//div[@class="container"]//img/@alt')
+
+    # 一般涉及图片的网站都会进行懒加载(使用变之前的进行爬取)
+    src_list = tree.xpath('//div[@class="container"]//img/@data-original')
+
+    print(len(name_list))
+    print(len(src_list))
+
+    for i in range(len(name_list)):
+        name = name_list[i]
+        url = 'https:'+src_list[i]
+        print(name, url)
+
+        urllib.request.urlretrieve(url=url, filename='zzImgs/'+name+'.jpg')
+
+
+    # 下载图片
+    # urllib.request.urlretrieve('图片地址', '文件的名字')
+
+
+if __name__ == "__main__":
+    start_page = int(input('请输入起始页码'))
+    end_page = int(input('请输入结束页码'))
+
+    for page in range(start_page, end_page + 1):
+        # 请求对象的定制
+        request = create_request(page)
+        # 获取网页的源码
+        content = get_content(request)
+        # 下载
+        down_load(content)
+
+```
+### 18 JsonPath
+
+``` 
+jsonpath的安装及使用方式:
+    pip安装:
+        pip install jsonpath
+    jsonpath的使用:
+        obj = json.load(open('json文件', 'r', encoding='utf-8'))
+        ret = jsonpath.jsonpath(obj, 'jsonpath语法')
+```
+
+JSONPath语法元素和对应的XPath元素的对比  
+![JSONPath语法元素和对应的XPath元素的对比](./markimgs/img_5.png)  
+
+
+案例练习: 淘票票  
 
 
 
