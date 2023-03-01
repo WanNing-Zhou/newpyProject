@@ -1948,6 +1948,70 @@ print(content)
     获取网页代码: page_source
     退出: browser.quit()
 ```
+
+示例:
+
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+# 可以使程序休眠
+import time
+
+# 创建浏览器服务对象
+s = Service(r'../chromeDriver/chromedriver.exe')
+driver = webdriver.Chrome(service=s)
+
+# url
+url = 'https://www.baidu.com'
+driver.get(url)  # 打开网页
+
+time.sleep(2)
+
+# 获取文本框的对象
+input = driver.find_element(By.ID, 'kw')
+
+# 在文本框中输入周杰伦
+input.send_keys('周杰伦')
+
+time.sleep(2)
+
+# 获取百度一下的按钮
+button = driver.find_element(By.ID, 'su')
+
+# 点击按钮
+button.click()
+time.sleep(2)
+
+# 滑倒底部
+js_bottom = 'document.documentElement.scrollTop=100000'
+driver.execute_script(js_bottom)  # 执行js代码
+
+time.sleep(2)
+
+# 获取下一页的按钮
+next = driver.find_element(By.XPATH, '//a[@class="n"]')
+# 点击下一页
+next.click()
+
+time.sleep(2)
+
+# 回到上一页
+driver.back()
+
+time.sleep(2)
+
+# 回去
+driver.forward()
+
+time.sleep(3)
+
+# 退出
+driver.quit()
+
+
+```
+
 #### 2 Phantomjs
 
 1. 什么是Phantomjs?
@@ -1963,8 +2027,49 @@ print(content)
     3) browser.get(url)
     扩展: 保存屏幕快照:browser.save.screenshot('baidu.png')
 ```
+#### 3 Chrome headless 
+
+Chrome-headless模式,Google针对Chrome浏览器59版 新增加的一种模式, 可以让你不打开ui界面的情况下使用Chrome浏览器,所以运行效果与Chrom保持完美一致
 
 
+1. 系统要求:
+``` 
+    Chorme:
+        Unix\Linux 系统需要 chrome >= 59
+        Windows 系统需要 chrome >= 60
+    Python3.6
+    Selenium == 3.4.*
+    ChromeDriver ==2.32
+```
+2 .使用:  
+```python
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+base_url = "http://www.baidu.com/"
+driver = webdriver.Chrome(options=chrome_options)
+driver.get(base_url + "/")
+driver.find_element_by_id("kw").send_keys("Python程序设计")
+driver.find_element_by_id("su").click()
+driver.save_screenshot('screen.png')
+driver.close()
+
+```
+3. 配置封装:
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+def share_browser():
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    driver = webdriver.Chrome(options=chrome_options)
+    return driver
+
+```
 
 
 
