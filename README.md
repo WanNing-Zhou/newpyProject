@@ -2071,7 +2071,72 @@ def share_browser():
 
 ```
 
+## 四 requests  
 
+### 1 基本使用
+
+1. 文档:
+``` 
+
+    官方文档
+        http://cn.python‐requests.org/zh_CN/latest/
+    快速上手    
+        http://cn.python‐requests.org/zh_CN/latest/user/quickstart.html
+```
+
+2. 安装
+``` pip install requests```
+
+3. response的数据以及类型
+``` 
+    类型 ：models.Response
+    r.text : 获取网站源码
+    r.encoding ：访问或定制编码方式
+    r.url ：获取请求的url
+    r.content ：响应的字节类型
+    r.status_code ：响应的状态码
+    r.headers ：响应的头信息
+```
+
+示例:
+```python
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# @FileName  :001_requests的基本使用.py
+# @Time      :2023/3/1 19:11
+# @Author    :周万宁
+
+import requests
+
+url = 'http://www.baidu.com'
+
+response = requests.get(url=url)
+
+# 一个类型和六个属性
+# Response类型
+# print(type(response))
+
+# 以字符串的形式来返回了网页的源码获取网站的源码 可能会产生乱码
+# print(response.text)
+
+# 设置响应的编码格式
+# response.encoding = 'utf-8'
+# print(response.text)
+
+# 返回一个url地址
+# print(response.url)
+
+# 返回的是二进制的数据
+print(response.content)
+
+# 返回响应的状态码
+print(response.status_code)
+
+# 返回响应头
+print(response.headers)
+```
+
+4. get请求
 
 
 
