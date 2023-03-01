@@ -1936,6 +1936,18 @@ print(content)
         .tag_name            
 ```
 
+4-3 交互
+```
+    点击: click()
+    输入: send_keys()
+    后退操作: brower.back()
+    前进操作: brower.forword()
+    模拟js滚动: 
+        js = 'document.body.scrollTop=100000'
+        js = 'document.documentElement.scrollTop=10000'
+    获取网页代码: page_source
+   
+```
 
 
 
