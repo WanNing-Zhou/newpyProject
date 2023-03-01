@@ -1831,6 +1831,40 @@ print(obj.get('id'))
 print(obj.attrs['id'])
 ```
 
+## 三 Selenium
+
+### 1. Selenium
+
+1. 什么是selenium? 
+``` 
+    1) Selenium 是一个用于Web应用程序测试的工具
+    2) Selenium 测试直接运行在浏览器中,就像真正的用户在操作营养
+    3) 支持通过各种driver(FirefoxDriver,IternetExplorerDriver,OperaDriver,ChormDriver)驱动真实浏览器完成测试
+    4) Selenium也是支持无界面浏览器操作的
+```
+
+2. 为什么使用Selenium?
+``` 
+    模拟浏览器功能,自动执行网页中的js代码,实现动态加载
+```
+
+3. 如何安装Selenium
+``` 
+    1) 操作谷歌浏览器驱动下载地址
+    2) 谷歌驱动和谷歌浏览器版本之间的映射表
+    3) 查看谷歌浏览器版本
+        谷歌浏览器右上角-->帮助--->关于
+    4) pip install selenium
+```
+
+4. selenium的使用步骤?
+
+``` 
+    1) 导入: from selenium import webdriver
+    2) 创建谷歌浏览器操作对象
+        path = 谷歌浏览器驱动文件路径
+        browser = webdriver.Chorme(path)
+```
 
 
 
