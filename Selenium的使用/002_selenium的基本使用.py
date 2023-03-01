@@ -32,4 +32,7 @@ driver = webdriver.Chrome(service=s)
 # 使用浏览器驱动可以获取京东的秒杀页面
 driver.get('https://www.jd.com/')
 # driver.quit()
+# 获取网站源码
+content = driver.page_source
 
+print(content)

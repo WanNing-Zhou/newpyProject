@@ -1864,10 +1864,77 @@ print(obj.attrs['id'])
     2) 创建谷歌浏览器操作对象
         path = 谷歌浏览器驱动文件路径
         browser = webdriver.Chorme(path)
+    3)  访问网站
+        url = 要访问的网址
+        browser.get(url)
 ```
+示例:
 
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
+# 尝试传参
+s = Service("../chromeDriver/chromedriver.exe")
+driver = webdriver.Chrome(service=s)
 
+# driver.get('https://www.baidu.com/')
+# 使用浏览器驱动可以获取京东的秒杀页面
+driver.get('https://www.jd.com/')
+# driver.quit()
+# 获取网站源码
+content = driver.page_source
+
+print(content)
+
+```
+4-1. selenium元素定位?
+``` 
+    元素定位: 自动化要做的就是模拟鼠标和键盘来操作这些元素, 点击,输入等等. 操作这些元素前首先要找到他们, WebDriver提供了以下的一些方法
+    方法: 
+        1. find_element_by_id
+            eg: button = browser.find_element_by_id('su')
+        2. find_element_by_name
+            eg: name = brower.find_element_by_name('wd')
+        3. finde_elements_by_xpath
+            eg:names = browser.fin_elements_by_xpath('//input[@id="su"]')
+        4. find_element_by_tag_name
+            eg:names = brower.find_elements_by_tag_name('input')
+        5. find_elements_by_css_selector
+            eg:my_input = browser.find_elements_by_css_selector('#kw')[0]
+        6.find_elements_by_link_text
+            eg:browser.find_element_by_link_text('新闻')       
+        
+        4.1.1版本中selenium已经get_element_***中的一些方法已经被淘汰,可以使用get_element方法来取代
+        get_element的使用
+            通过webdriver对象的find_element("属性名","属性值")方式来定位元素
+                eg:
+                    button  = browser.find_element('id','su')
+                    element = browser.find_element('class name','plant')
+        
+        通过webdriver模块中的By，以指定方式定位元素            
+             导入模块：from selenium.webdriver.common.by import By
+             如：定位id为username，class_name为password，tag_name为input的元素    
+             from selenium.webdriver.common.by import By
+             webdriver.find_element(By.ID,'username')
+             webdriver.find_element(BY.CLASS_NAME,'password')
+             webdriver.find_element(BY.TAG_NAME, 'input')
+             
+        find_element()和find_elements()的区别     
+            (1) find_element()返回的结果使一个WebElement对象,如果符合条件的有多个,默认返回找到的第一个,如果没有找到则抛出NoSuchElementException异常
+            (2) find_elements()返回的结果是一个包含所有符合条件的WebElement对象的列表,如果未知找到,则返回一个空列表
+```
+4-2: 访问元素信息
+```
+    获取元素属性
+        .get_attribute('class')
+    获取元素文本
+        .text
+    获取id
+        .id
+    获取标签名
+        .tag_name            
+```
 
 
 
