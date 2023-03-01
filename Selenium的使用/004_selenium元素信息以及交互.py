@@ -21,3 +21,6 @@ print(input.get_attribute('class'))
 print(input.tag_name)
 # 获取元素文本
 print(input.text)
+
+
+

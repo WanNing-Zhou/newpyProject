@@ -1946,8 +1946,29 @@ print(content)
         js = 'document.body.scrollTop=100000'
         js = 'document.documentElement.scrollTop=10000'
     获取网页代码: page_source
-   
+    退出: browser.quit()
 ```
+#### 2 Phantomjs
+
+1. 什么是Phantomjs?
+```
+    1) 是一个无界面的浏览器
+    2) 页面元素查找,js的执行等
+    3) 由于不进行css和gui渲染,运行效率要比真实浏览器快很多
+```
+2. 如何使用Phantomjs?
+```
+    1) 获取PhantomJS.exe文件路径path
+    2) browser = webdriver.PathtomJS(path)
+    3) browser.get(url)
+    扩展: 保存屏幕快照:browser.save.screenshot('baidu.png')
+```
+
+
+
+
+
+
 
 
 
