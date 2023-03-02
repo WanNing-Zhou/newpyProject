@@ -7,6 +7,7 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 import json
+import urllib.request
 
 
 # 如果想使用管道的话,那么就必须在settings中开启管道
@@ -37,3 +38,16 @@ class ScrapyDangdangPipeline:
         self.fp.close()
 
         # print('++++++++')
+
+
+# 多条管道开启
+# 1) 定义管道类
+# 2) 在settings开启管道
+class DangDangDwonloadPipeline:
+    def process_item(self, item, spider):
+        url = 'http:' + item.get('src')
+        filename = './books/' + item.get('name') + '.jpg'
+
+        urllib.request.urlretrieve(url=url, filename=filename)
+
+        return item

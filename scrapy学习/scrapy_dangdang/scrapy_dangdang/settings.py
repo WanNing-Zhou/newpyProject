@@ -65,7 +65,10 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
     # 管道可以有很多个, 那么管道是有优先级的,优先级的范围是1到1000,值越小优先级越高
    "scrapy_dangdang.pipelines.ScrapyDangdangPipeline": 300,
+   # DangDangDwonloadPipeline 然后设置优先级
+   'scrapy_dangdang.pipelines.DangDangDwonloadPipeline': 301,
 }
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -86,7 +89,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_EXPIRATION_SECS = 0
 #HTTPCACHE_DIR = "httpcache"
 #HTTPCACHE_IGNORE_HTTP_CODES = []
-#HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
+#HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"s
 
 # Set settings whose default value is deprecated to a future-proof value
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
