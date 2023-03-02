@@ -8,7 +8,7 @@
 
 如果在安装的时候没有选中添加环境变量,可以在环境变量中添加环境变量如下图所示:
 
-要将python添加到用户变量中的python中
+要将python添加到用户变量中的python中        
 
 ![python环境变量](./markimgs/img.png)
 
@@ -2364,7 +2364,15 @@ with open('daili.html', 'w', encoding='utf-8') as fq:
             使用xpath路径查询特定元素,返回一个selector列表对象
     
 ```
+### 3 yield
 
+1. 带有yield的安徽拿书不再时一个普通函数,而是一个生成器generator,可用于迭代
+2. yield是一个类似return的关键字,迭代一次遇到yield时就会返回yield后面(右边)的值, 重点是下一次迭代时,从上一次迭代遇到的yield后面的代码(下一行)开始执行
+3. 简单理解: yield就是return返回一个值,并且记住这个返回的位置,下次迭代就从这个位置后(下一行)开始
+
+案例:
+    1. 当当网 (1) yield (2) 管道封装 (3)多条管道下载 (4) 多页数据下载
+    2. 电影天堂 (1) 一个item包含多级页面的数据
 
 
 
