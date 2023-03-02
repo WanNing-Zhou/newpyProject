@@ -2374,7 +2374,39 @@ with open('daili.html', 'w', encoding='utf-8') as fq:
     1. 当当网 (1) yield (2) 管道封装 (3)多条管道下载 (4) 多页数据下载
     2. 电影天堂 (1) 一个item包含多级页面的数据
 
+### 4 pymysql的使用步骤  
 
+```` 
+1. pip install pymysql
+2. pymysql.connect(host,port,user,password,db,charset)
+3. conn.cursor()
+4.cursor.execute()
+````
+
+### 5 crawSpider
+
+``` 
+1. 继承自scrapy.Spider
+2. 独门秘籍
+    CrawlSpider可以定义规则,再解析html内容的时候,可以根据链接规则提取出指定的链接,然后再想这些链接发送请求
+    所以如果呦需要跟进链接的需求,意思就是爬取了网页之后,需要提取链接再次爬取,使用CrawlSpider是非常合适的
+```
+``` 
+3. 提取链接
+    链接提取器, 在这里就可以写规则提取指定链接
+    scrapy.inkextractors.LinkExtractor(
+        allow = (), # 正则表达式,提取符合正则的链接
+        deny = (), # (不用)正则表达式,不提取符合正则的链接
+        allow_domains = (), # (不用)允许的域名
+        deny_domains = (), # (不用)不允许的域名
+        restrict_xpaths = (), # xpath, 提取符合xpath规则的链接
+        restrict css = () # 提取符合选择器规则的链接 
+    )
+```
+
+
+
+### CrawSpoder
 
 
 

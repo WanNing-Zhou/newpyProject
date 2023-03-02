@@ -2,16 +2,14 @@ import scrapy
 
 from scrapy_dangdang.items import ScrapyDangdangItem
 
-
 class DangSpider(scrapy.Spider):
     name = "dang"
+    # 如果是多页下载的话, 那么必须要调整的是allowed_domains的范围, 一般情况下只写域名
     allowed_domains = ["category.dangdang.com"]
     start_urls = ["http://category.dangdang.com/cp01.01.02.00.00.00.html"]
 
     base_url = 'http://category.dangdang.com/pg'
     page = 1
-
-
 
     def parse(self, response):
         # pipelines 下载数据
@@ -36,6 +34,19 @@ class DangSpider(scrapy.Spider):
 
             book = ScrapyDangdangItem(src=src, name=name, price=price)
 
-            # 获取一个book就将book交给pipelines
+            # 获取一个book就将book交给pipelines的那个页的请求再次调用parse方法
             yield book
 
+        # 每一页的爬取的业务逻辑全都是一样的,所以我们只需要将执行
+
+        if self.page < 20:
+            self.page = self.page + 1
+
+            # 请求地址
+            url = self.base_url + str(self.page) + '-cp01.01.02.00.00.00.html'
+
+            #             怎么去调用parse方法
+            #             scrapy.Request就是scrpay的get请求
+            #             url就是请求地址
+            #             callback是你要执行的那个函数  注意不需要加（）
+            yield scrapy.Request(url=url, callback=self.parse)
