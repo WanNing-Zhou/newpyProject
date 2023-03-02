@@ -2303,8 +2303,11 @@ with open('daili.html', 'w', encoding='utf-8') as fq:
                 response.body ---> 响应的是二进制文件
                 response.xpath() --> xpath方法的返回值类型是selector列表
 ```
+``` 
+4. 启动爬虫程序
+    scrapy crawl 项目
 
-
+```
 
 
 
