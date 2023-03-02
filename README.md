@@ -2255,9 +2255,54 @@ with open('daili.html', 'w', encoding='utf-8') as fq:
     fq.write(content)
 ```
 
+## scrapy
 
+### 1 scrapy
 
+1. scrapy 是什么?
+```  
+    scrapy是一个为了爬取网站数据,提取结构书而编写的框架,可以可以应用在包括数据挖掘,信息处理或存储历史数据等一系列的程序中 
+```
+2. 安装scrapy
+``` 
+    pip install scrapy
+```
 
+#### 1.1 scrapy 项目的创建以及运行
+
+``` 
+1. 创建scrapy项目
+    终端输入 scrapy startproject 项目名称
+```
+
+``` 
+2. 项目组成:
+
+    spiders
+        __init__.py
+        自定义的爬虫文件.py ‐‐‐》由我们自己创建，是实现爬虫核心功能的文件
+    __init__.py
+    items.py ‐‐‐》定义数据结构的地方，是一个继承自scrapy.Item的类
+    middlewares.py ‐‐‐》中间件 代理
+    pipelines.py ‐‐‐》管道文件，里面只有一个类，用于处理下载数据的后续处理
+    默认是300优先级，值越小优先级越高（1‐1000）
+    settings.py ‐‐‐》配置文件 比如：是否遵守robots协议，User‐Agent定义等
+```
+``` 
+3. 创建爬虫文件:
+    1) 跳转到spiders文件夹 cd 目录连名字/目录名字/spiders
+    2) scrapy genspider 爬虫名字 网页的域名
+    
+    爬虫文件的基本组成:
+        继承scrapy.Spider类
+            name='baidu' --> 与i选哪个爬虫文件时使用的名字
+            allowed_domains --> 爬虫允许的域名,在爬取的时候,如果不是此域名之下的url,会被过滤掉
+            start_urls  ---> 声明了爬虫的起始地址, 可以写多个url, 一般是一个
+            parse(self,response) ---> 解析数据的回调函数
+                response.text  ---> 响应的是字符串
+                response.body ---> 响应的是二进制文件
+                response.xpath() --> xpath方法的返回值类型是selector列表
+```
 
 
 
