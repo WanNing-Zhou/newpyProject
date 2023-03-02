@@ -2306,11 +2306,64 @@ with open('daili.html', 'w', encoding='utf-8') as fq:
 ``` 
 4. 启动爬虫程序
     scrapy crawl 项目
-
+    注意: 应在spiders文件夹内执行
 ```
+#### 3. scrapy结构组成
+``` 
+    1) 引擎 --> 自动运行, 无需关注, 会自动阻止所有的请求对象,分发给下载器
+    2) 下载器  -->  从引擎处获取到对象后,请求数据
+    3) spiders --> spider定义了如何爬取(或某些)网站, 包括了爬取的动作(例如:是否跟进链接)
+        以及如何从网页内容中提取结构化数据(爬取item), 换句话说, Spider就是定义爬取的动作以及分析某个网页(或者是有些网站)的地方
+    4) 调度器  --> 有自己的调度规则,无需关注
+    5) 管道(Item pipeline)  -->最终处理数据的管道, 会预留接口供我们处理数据
+当Item在spider中被手机之后,会将会被传递到item pipeline, 一些组件会按照一定的顺序执行对Item的处理
+每个item pipeline组件(有时称之为"Item Pipline")是实现了方法的python类,他们接受到Item并通过它执行一些行为,同时也决定此Item是否继续通过plepline,或是被丢弃而不再进行处理 
+    以下是Item pipeline的一些典型应用:
+        1. 清理HTML数据
+        2. 验证爬取的数据(检查item包含某些字段)
+        3. 查重(并丢弃)
+        4. 将爬取结果保存到数据库中     
+```
+#### 4 scrapy 工作原理
+
+![工作原理图](./markimgs/img_6.png)
+
+![模型](./markimgs/img_7.png)
 
 
+###2. scrapy shell
 
+``` 
+1. 什么是scrapy shell?
+    Scrapy终端,是一个交互终端,供你在未启动spider的情况下尝试及调试你的代码,其本意是用来提取数据的代码,
+其本意是用来测试提取数据的代码,不过您可以将其作为正常的python终端,在上面测试任何的python代码,
+该终端是用来测试xPath或CSS表达式,查看他们的工作方法及从爬取网页中的提取数据,在编写您的spider时,
+该终端提供了交互性测试你的表达式代码的功能,免去了每次修改后运行spoder的麻烦
+一旦熟悉了Scrapy终端后,就会发现在开发和条时spider时发挥的巨大作用
+```
+``` 
+2. 安装ipython
+    安装: pip install ipython
+    简介: 如果您安装了ipython,scrapy终端使用IPython(替代表准IPython中的奶奶,IPython终端于其他相比更加强大)
+    提供了只能的自动补全,高亮输出,及其他特性
+```
+``` 
+3. 应用:
+    1) scrapy shell www.baidu.com
+    2) scrapy shell http://www.baidu.com
+    3) scrapy shell "http://www.baidu.com"
+    4) scrapy shell "ww.baidu.com"
+语法:
+    1) response对象:
+        response.body
+        response.text
+        response.url
+        response.status
+    2) rsponse的解析:
+        response.xpath() (常用)
+            使用xpath路径查询特定元素,返回一个selector列表对象
+    
+```
 
 
 
