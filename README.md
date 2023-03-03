@@ -2416,10 +2416,70 @@ with open('daili.html', 'w', encoding='utf-8') as fq:
 
 
 
-### CrawSpoder
+### 6 CrawSpider案例
+
+需求: 读书网数据入库
+
+```
+1. 创建项目: scrapy startproject dushuproject
+2. 跳转到spider路径 cd dushuproject\sushuproject\spiders
+3. 创建爬虫类 scrapy genspider -t crawl read www.dushu.com
+4. items
+5. spiders'
+6. settings
+7. piplines
+    数据保存到本地
+    数据保存到mysql数据库
+```
+
+### 8. 数据入库
+
+``` 
+1) settings配置参数:
+    DB_HOST = ''
+    DB_POST = 3306
+    DB_USER = 'root'
+    DB_PASSWORD = '1234'
+    DB_NAME = 'test'
+    DB_CHARSET = 'utf-8'
+2) 管道配置
+
+```
+### 9 日志信息和日志等级
+
+``` 
+1) 日志级别:
+    CRITICAL: 严重错误
+    ERROR: 一般错误
+    WARNING: 警告
+    INFO: 一般信息
+    DEBUG: 调试信息
+    
+    默认的日志宕机时DEBUG
+    只要出现了DEBUG或者DEBUGE以上等级的日志
+    那么这些日志将会打印
+2) settings.py文件设置:
+    默认的级别DEBUG, 会显示上面所有的i西南西
+    在配置文件中: setting.py
+    LOG_FILE: 将屏幕显示的信息全部记录到文件中,屏幕不再显示,注意文件的后缀一定为.log
+    LOG_LEVEL: 设置日志显示的等级,就是显示哪些,不显示哪些   
+```
 
 
+### 10 scrapy的post请求
 
+``` 
+1) 重写start_request方法
+    def start_request(self)
+2) start_request的返回值
+    scrapy.FormRequest(url=url,headers=header,callback=self.parse_item,formdata=data)
+    
+        url:要发送的post地址
+        headers: 可以定制头信息
+        callback: 回调函数
+        formdata:post携带的数据,这是一个字典
+
+```
 
 
 
