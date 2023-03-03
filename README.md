@@ -2383,7 +2383,7 @@ with open('daili.html', 'w', encoding='utf-8') as fq:
 4.cursor.execute()
 ````
 
-### 5 crawSpider
+### 5 CrawSpider
 
 ``` 
 1. 继承自scrapy.Spider
@@ -2402,6 +2402,16 @@ with open('daili.html', 'w', encoding='utf-8') as fq:
         restrict_xpaths = (), # xpath, 提取符合xpath规则的链接
         restrict css = () # 提取符合选择器规则的链接 
     )
+4. 模拟使用
+    正则用法: links1 = LinkExtractor(allow=r'list_23_\d+\.html')
+    xpath用法: linke2 = LinkExtractor(restrict_xpaths=r'//div[@class="x"]')
+    css用法:   linke3 = LinkExtractor(restrict_css='x')
+5. 提取连接
+    link.extract_links(response)
+```
+```
+6. 注意事项:
+
 ```
 
 
